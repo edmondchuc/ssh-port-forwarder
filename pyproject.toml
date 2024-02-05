@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "ssh-port-forwarder"
+version = "0.1.0"
+description = "A desktop application to manage SSH port forwarding."
+license = "MIT"
+authors = ["Edmond Chuc <edmond.chuc@gmail.com>"]
+readme = "README.md"
+packages = [{include = "ssh_port_forwarder"}]
+
+[tool.poetry.dependencies]
+python = ">=3.12.1,<3.13"
+sshtunnel = "^0.4.0"
+loguru = "^0.7.2"
+pyside6 = "^6.6.1"
+tinydb = "^4.8.0"
+pydantic = "^2.6.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.2.0"
+pyinstaller = "^6.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

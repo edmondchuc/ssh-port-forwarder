@@ -1,0 +1,24 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  code:check:
+    desc: Check whether code formatting rules apply.
+    cmds:
+      - poetry run ruff format --check
+      - poetry run ruff check
+
+  code:
+    desc: Format and standardise code.
+    cmds:
+      - poetry run ruff format
+      - poetry run ruff --fix
+
+  test:
+    desc: Run Python tests.
+    cmds:
+      - poetry run python -m pytest
+
+  build:
+    cmd: pyinstaller main.spec
