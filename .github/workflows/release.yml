@@ -1,0 +1,36 @@
+name: Release - macOS
+
+on:
+  release:
+    types:
+      - published
+
+env:
+  PYTHON_VERSION: "3.12.1"
+
+jobs:
+  publish:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install Python Poetry
+        uses: snok/install-poetry@v1
+
+      - name: Install Python dependencies
+        run: poetry install
+
+      - name: Install Task
+        uses: arduino/setup-task@v1
+        with:
+          version: 3.x
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build app distribution
+        run: task build
