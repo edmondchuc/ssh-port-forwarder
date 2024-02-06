@@ -23,14 +23,14 @@ jobs:
       - name: Install Python Poetry
         uses: snok/install-poetry@v1
 
-      - name: Install Python dependencies
-        run: poetry install --with dev
-
       - name: Install Task
-        uses: arduino/setup-task@v1
+        uses: arduino/setup-task@v2
         with:
           version: 3.x
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Python dependencies
+        run: task install
 
       - name: Build app distribution
         run: task build

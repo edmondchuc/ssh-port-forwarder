@@ -3,6 +3,9 @@
 version: '3'
 
 tasks:
+  install:
+    cmd: poetry install --with dev
+
   code:check:
     desc: Check whether code formatting rules apply.
     cmds:
@@ -21,7 +24,7 @@ tasks:
       - poetry run python -m pytest
 
   build:app:
-    cmd: pyinstaller main.spec -y
+    cmd: poetry run pyinstaller main.spec -y
 
   build:dmg:
     cmd: ./builddmg.sh
