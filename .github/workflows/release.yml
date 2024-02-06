@@ -24,7 +24,7 @@ jobs:
         uses: snok/install-poetry@v1
 
       - name: Install Python dependencies
-        run: poetry install
+        run: poetry install --with dev
 
       - name: Install Task
         uses: arduino/setup-task@v1
@@ -34,3 +34,8 @@ jobs:
 
       - name: Build app distribution
         run: task build
+
+      - name: Upload release asset
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "dist/SSH Port Forwarder.dmg"

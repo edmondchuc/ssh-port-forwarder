@@ -20,5 +20,13 @@ tasks:
     cmds:
       - poetry run python -m pytest
 
+  build:app:
+    cmd: pyinstaller main.spec -y
+
+  build:dmg:
+    cmd: ./builddmg.sh
+
   build:
-    cmd: pyinstaller main.spec
+    cmds:
+      - task: build:app
+      - task: build:dmg
