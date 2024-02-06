@@ -15,6 +15,13 @@ jobs:
       - name: Checkout the repo
         uses: actions/checkout@v4
 
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Install create-dmg
+        run: brew install create-dmg
+
       - name: Install Python
         uses: actions/setup-python@v5
         with:
