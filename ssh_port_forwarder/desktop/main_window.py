@@ -44,10 +44,10 @@ class MainWindow(QMainWindow):
         self.loading_label = QLabel("Loading...")
         layout.addWidget(self.loading_label)
 
-        self.worker = StartupWorker()
-        self.worker_thread = threading.Thread(target=self.worker.init)
-        self.worker.completed.connect(self.init_callback)
-        self.worker_thread.start()
+        worker = StartupWorker()
+        worker_thread = threading.Thread(target=worker.init)
+        worker.completed.connect(self.init_callback)
+        worker_thread.start()
 
     def draw(self):
         self.draw_connections()
