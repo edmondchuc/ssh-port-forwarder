@@ -13,10 +13,13 @@ query = Query()
 # TODO: Currently used as a singleton to also keep track of tunnel objects.
 class ConnectionService:
     def __init__(self, db: TinyDB):
+        super().__init__()
         self.db = db
 
         # A dict containing connection id and dict of port and tunnel object key-value pair.
         self.tunnels: dict[str, dict[int, Tunnel]] = defaultdict(dict)
+
+    def init(self):
         connections = self.get_all()
 
         # Create tunnel objects and start them if they are enabled.
